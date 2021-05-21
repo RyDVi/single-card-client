@@ -1,0 +1,7 @@
+{
+    "home": "/",
+    "login": "/auth",
+    "reg": "/auth/reg",
+    "reg_check": "/auth/reg_check",
+    "map": "/map"
+}
