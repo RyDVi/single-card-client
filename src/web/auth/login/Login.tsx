@@ -10,23 +10,23 @@ export default function Login() {
   };
 
   const login = async () => {
-    const response = await fetch("http://10.17.0.214:7000/auth/login/", {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-      body:JSON.stringify({
-        email: 'aaa1@mail.ru',
-        password: '12345678'
-      })
-    })
-    if(response.ok){
-      const result = response.json()
-      console.log(result)
-    } else {
-      alert('error')
-    }
-    // history.push(routes.map);
+    // const response = await fetch("http://10.17.0.214:7000/auth/login/", {
+    //   method: 'POST',
+    //   headers:{
+    //     'Content-Type': 'application/json;charset=utf-8'
+    //   },
+    //   body:JSON.stringify({
+    //     email: 'aaa1@mail.ru',
+    //     password: '12345678'
+    //   })
+    // })
+    // if(response.ok){
+    //   const result = response.json()
+    //   console.log(result)
+    // } else {
+    //   alert('error')
+    // }
+    history.push(routes.main);
   };
   return (
     <div>

@@ -1,0 +1,17 @@
+.card-container {
+    width: 300px;
+}
+
+.card-container-header {
+    border-bottom: 1px gray solid;
+    border-radius: 0.25rem;
+}
+
+.card-container-header h5 {
+    width: 100%;
+    align-self: center;
+}
+
+.card-container-header button {
+    border: none;
+}

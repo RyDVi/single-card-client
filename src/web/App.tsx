@@ -8,6 +8,9 @@ import routes from "./routes.json";
 import MapContainer from "./map_container/MapContainer";
 import Home from "./home/Home";
 import { Helmet } from "react-helmet";
+import Cards from "./cards/Cards";
+import Main from "./main/Main";
+import News from "./news/News";
 
 function App() {
   return (
@@ -26,6 +29,16 @@ function App() {
           <Route path={routes.map}>
             <MapContainer />
           </Route>
+          <Route path={routes.cards}>
+            <Cards/>
+          </Route>
+          <Route path={routes.main}>
+            <Main />
+          </Route>
+          <Route path={routes.news}>
+            <News />
+          </Route>
+          {/* !Не ставить ниже Home остальные маршруты! */}
           <Route path={routes.home}>
             <Home />
           </Route>

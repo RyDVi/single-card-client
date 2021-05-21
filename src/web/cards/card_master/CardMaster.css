@@ -1,0 +1,17 @@
+.card-master {
+    width: 280px;
+    flex-shrink: 0;
+    z-index: 1;
+    height: 90vh;
+}
+
+.btn-back {
+    border: none;
+    background: none;
+}
+
+.card-list {
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}

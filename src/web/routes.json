@@ -3,5 +3,9 @@
     "login": "/auth",
     "reg": "/auth/reg",
     "reg_check": "/auth/reg_check",
-    "map": "/map"
+    "map": "/map",
+    "cards": "/cards",
+    "card": "/cards/:id",
+    "main": "/main",
+    "news": "/news"
 }
