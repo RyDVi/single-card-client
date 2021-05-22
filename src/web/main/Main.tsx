@@ -34,19 +34,36 @@ export default function Main() {
     },
   ];
 
+  const lastAchievements = [
+    {
+      id: 1,
+      name: "Поездки с единой картой",
+      img: "",
+      description: "Оплатите проезд транспортной картой",
+      done: false,
+    },
+    {
+      id: 1,
+      name: "Покупка сувениров с единой картой",
+      img: "",
+      description: "Купите сувенир у одного из партнеров с картой",
+      done: false,
+    },
+  ];
+
   const history = useHistory();
 
   return (
     <div>
-      <header className="header">
+      <header className="p-2">
         <button className="btn btn-outline-primary" onClick={() => {}}>
           <FontAwesomeIcon icon={faBars} />
         </button>
-        <span className="badge bg-primary">112 баллов</span>
+        <span className="badge bg-primary text-center">112 баллов</span>
       </header>
       <div className="container-md">
         <div className="row">
-          <div className="col">
+          <div className="col d-flex justify-content-center mt-2 mb-2">
             <CardContainer
               title="Карты"
               path={routes.cards}
@@ -69,7 +86,7 @@ export default function Main() {
               }
             />
           </div>
-          <div className="col">
+          <div className="col d-flex justify-content-center mt-2 mb-2">
             <CardContainer
               title="Новости"
               path={routes.news}
@@ -80,6 +97,26 @@ export default function Main() {
                       <li className="list-group-item d-flex justify-content-between align-items-start">
                         <div className="ms-2 me-auto">
                           <div className="fw-bold">{title}</div>
+                          {description}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              }
+            />
+          </div>
+          <div className="col d-flex justify-content-center mt-2 mb-2">
+            <CardContainer
+              title="Достижения"
+              path={routes.achievements}
+              cardBody={
+                <ul className="list-group list-group-flush">
+                  {lastAchievements.map(({ id, name, description }) => {
+                    return (
+                      <li className="list-group-item d-flex justify-content-between align-items-start">
+                        <div className="ms-2 me-auto">
+                          <div className="fw-bold">{name}</div>
                           {description}
                         </div>
                       </li>

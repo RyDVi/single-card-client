@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet";
 import Cards from "./cards/Cards";
 import Main from "./main/Main";
 import News from "./news/News";
+import Achievements from "./achievements/Achievements";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path={routes.news}>
             <News />
+          </Route>
+          <Route path={routes.achievements}>
+            <Achievements />
           </Route>
           {/* !Не ставить ниже Home остальные маршруты! */}
           <Route path={routes.home}>

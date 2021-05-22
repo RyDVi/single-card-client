@@ -7,5 +7,6 @@
     "cards": "/cards",
     "card": "/cards/:id",
     "main": "/main",
-    "news": "/news"
+    "news": "/news",
+    "achievements": "/achievements"
 }
