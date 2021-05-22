@@ -10,5 +10,6 @@
     "news": "/news",
     "achievements": "/achievements",
     "profile": "/profile",
-    "pay": "/pay"
+    "pay": "/pay",
+    "services": "/services"
 }

@@ -1,0 +1,28 @@
+.service-card {
+    width: 300px;
+    background-color: white;
+    border-radius: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.service-card header {
+    text-align: center;
+    padding: 10px;
+}
+
+.service-card p {
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.discount-btn {
+    border-radius: 48px;
+    text-align: center;
+    width: 80px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
