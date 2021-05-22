@@ -26,6 +26,8 @@ export default function RegCheck() {
       sessionStorage.setItem("email", result.user.email);
       sessionStorage.setItem("user_type", result.user.user_type);
       sessionStorage.setItem("name", result.user.name);
+      sessionStorage.setItem('account_number', result.user.account_number)
+      sessionStorage.setItem('is_esia_confirm', result.user.is_esia_confirm)
       setShowLoad(false);
       history.push(routes.login)
     } else {

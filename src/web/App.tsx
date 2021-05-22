@@ -13,6 +13,7 @@ import Main from "./main/Main";
 import News from "./news/News";
 import Achievements from "./achievements/Achievements";
 import Profile from "./profile/Profile";
+import Pay from "./pay/Pay";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path={routes.profile}>
             <Profile />
+          </Route>
+          <Route path={routes.pay}>
+            <Pay />
           </Route>
           {/* !Не ставить ниже Home остальные маршруты! */}
           <Route path={routes.home}>

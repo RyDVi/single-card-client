@@ -1,0 +1,5 @@
+.pay-screen {
+    height: 100vh;
+    overflow: auto;
+    width: calc(var(--profile-width) + 100px);
+}

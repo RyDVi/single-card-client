@@ -9,5 +9,6 @@
     "main": "/main",
     "news": "/news",
     "achievements": "/achievements",
-    "profile": "/profile"
+    "profile": "/profile",
+    "pay": "/pay"
 }

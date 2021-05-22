@@ -47,7 +47,6 @@ const profileStatuses = {
 };
 
 export default function Profile() {
-  const profileAccepted = true;
   const transportStatus = profileStatuses.novorossiec;
   const history = useHistory();
   const [showLoad, setShowLoad] = useState(false);
@@ -56,6 +55,7 @@ export default function Profile() {
     email: "",
     user_type: "",
     balance: 0,
+    is_esia_confirm: false,
   });
   const [showChangePass, setShowChangePass] = useState("none");
   const [changePass, setChangePass] = useState({
@@ -68,11 +68,13 @@ export default function Profile() {
     const email = sessionStorage.getItem("email");
     const user_type = sessionStorage.getItem("user_type");
     const name = sessionStorage.getItem("name");
+    const is_esia_confirm = sessionStorage.getItem("is_esia_confirm");
     setUserData({
       email: email || "",
       user_type: user_type || "",
       name: name || "",
       balance: 0,
+      is_esia_confirm: is_esia_confirm == "true",
     });
   }, [userData.name, userData.email, userData.user_type]);
 
@@ -96,10 +98,10 @@ export default function Profile() {
       }
     });
   }, [userData.balance]);
-
+  console.log(userData);
   let profileStatusText = "";
   if (userData.user_type === profiles.citizen) {
-    if (!profileAccepted) {
+    if (!userData.is_esia_confirm) {
       profileStatusText = "Подтвердите учетную запись жителя";
     } else {
       profileStatusText = "Вы житель города. Ваш статус: " + transportStatus;
@@ -136,6 +138,31 @@ export default function Profile() {
       alert("error");
     }
   };
+
+  const acceptGosuslugi = async () => {
+    const response = await fetch(
+      "http://10.17.0.214:8000/api/v1/auth/esia_confirm/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          user_type: userData.user_type,
+          email: userData.email,
+        }),
+      }
+    );
+    if (response.ok) {
+      sessionStorage.setItem("is_esia_confirm", "true");
+      setUserData({ ...userData, is_esia_confirm: true });
+      setShowLoad(false);
+    } else {
+      setShowLoad(false);
+      alert("error");
+    }
+  };
   return (
     <div className="profile-screen">
       <LoadingScreen visible={showLoad} />
@@ -150,8 +177,11 @@ export default function Profile() {
       <hr />
       <div className="d-flex">
         <div className="w-100 text-center">{profileStatusText}</div>
-        {userData.user_type === profiles.citizen && !profileAccepted ? (
-          <button className="btn btn-gosuslugi">{gosuslugiSVG}</button>
+        {userData.user_type === profiles.citizen &&
+        !userData.is_esia_confirm ? (
+          <button className="btn btn-gosuslugi" onClick={acceptGosuslugi}>
+            {gosuslugiSVG}
+          </button>
         ) : (
           <></>
         )}
@@ -172,6 +202,14 @@ export default function Profile() {
         <div className="text-yellow justify-content-left email-data mt-2 fs-1 text-center">
           {userData.balance} <FontAwesomeIcon icon={faRubleSign} />
         </div>
+        <button
+          className="w3-round-xxlarge btn-profile mt-5 btn-profile-width"
+          onClick={() => {
+            history.push(routes.pay);
+          }}
+        >
+          Пополнить
+        </button>
         <button
           className="w3-round-xxlarge btn-profile mt-5 btn-profile-width"
           onClick={() => {
