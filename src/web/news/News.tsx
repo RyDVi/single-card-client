@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import "./News.css";
 
-export default function Achievements() {
+export default function News() {
   const history = useHistory();
 
   const cultureData = [
@@ -28,7 +28,7 @@ export default function Achievements() {
   ];
 
   return (
-    <div className="achievements-screen">
+    <div className="news-screen">
       <div className="d-flex">
         <button className="btn" onClick={history.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} />
@@ -43,7 +43,7 @@ export default function Achievements() {
         </div>
         {cultureData.map(({ id, title, description, image }) => {
           return (
-            <div className="news-card">
+            <div key={id} className="news-card">
               <header>
                 <h4>{title}</h4>
               </header>
@@ -63,7 +63,7 @@ export default function Achievements() {
         </div>
         {offerData.map(({ id, title, description, image }) => {
           return (
-            <div className="news-card">
+            <div key={id} className="news-card">
               <header>
                 <h4>{title}</h4>
               </header>

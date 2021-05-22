@@ -32,7 +32,7 @@ export default function CardMaster() {
       <div className="card-list">
         {cardsData.map(({ id, imgBack, imgFront }) => {
           return (
-            <div className="mt-5">
+            <div className="mt-5" key={id}>
               <Link
                 to={`${routes.cards}/${id}`}
                 className="mt-5"

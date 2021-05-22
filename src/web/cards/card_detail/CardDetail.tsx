@@ -9,24 +9,24 @@ import "./CardDetail.css";
 export default function CardDetail() {
   let { id }: { id: string } = useParams();
   const [cardData, setCardData] = useState({
-    id: "",
+    id: "1",
     number: "1111-2222-3333-4444",
     balance: 350,
     history: [
       {
-        id: "",
+        id: "1",
         price: 100,
         date: "11.06.2017 11:23:00",
         description: "Пополнение баланса",
       },
       {
-        id: "",
+        id: "2",
         price: 50,
         date: "11.06.2017 11:23:00",
         description: "Пополнение баланса",
       },
       {
-        id: "",
+        id: "3",
         price: 100,
         date: "11.06.2017 11:23:00",
         description: "Пополнение баланса",
@@ -59,7 +59,10 @@ export default function CardDetail() {
               cardBody={cardData.history.map(
                 ({ id, price, date, description }) => {
                   return (
-                    <li className="list-group-item d-flex justify-content-between align-items-start">
+                    <li
+                      key={id}
+                      className="list-group-item d-flex justify-content-between align-items-start"
+                    >
                       <div className="ms-2 me-auto">
                         <div className="fw-bold">{date}</div>
                         {description}

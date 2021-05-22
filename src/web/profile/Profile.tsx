@@ -182,7 +182,6 @@ export default function Profile() {
                   className="form-control w3-round-xxlarge"
                   placeholder="Текущий пароль"
                   value={changePass.old_password}
-                  defaultValue={changePass.old_password}
                   onChange={(event) => {
                     setChangePass({
                       ...changePass,
@@ -198,7 +197,6 @@ export default function Profile() {
                   className="form-control w3-round-xxlarge"
                   placeholder="Новый пароль"
                   value={changePass.new_password}
-                  defaultValue={changePass.new_password}
                   onChange={(event) => {
                     setChangePass({
                       ...changePass,
@@ -214,7 +212,6 @@ export default function Profile() {
                   className="form-control w3-round-xxlarge"
                   placeholder="Повтор пароля"
                   value={changePass.confirm_password}
-                  defaultValue={changePass.confirm_password}
                   onChange={(event) => {
                     setChangePass({
                       ...changePass,
