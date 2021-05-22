@@ -8,3 +8,22 @@
     background-color: var(--blue-brand);
     height: 100vh;
 }
+
+.btn-green {
+    background-color: var(--green-brand);
+    border: 1px;
+    height: 40px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-green-width {
+    width: var(--profile-width);
+}
+
+.btn-green:hover {
+    background-color: rgb(81, 189, 153);
+}
+
+.btn-green:active {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.87);
+}

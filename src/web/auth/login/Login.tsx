@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
 import routes from "../../routes.json";
+import "w3-css";
+import nov from "./novorossisk_logo.svg";
 
 export default function Login() {
   const history = useHistory();
@@ -38,13 +40,13 @@ export default function Login() {
     // history.push(routes.main);
   };
   return (
-    <div>
-      <h1 className="mb-5 mt-5">Авторизация</h1>
+    <div className='login-screen'>
+      <h1 className="mb-5 mt-5 text-center">Авторизация</h1>
       <div className="mb-3">
-        <label className="form-label">Почта</label>
+        <label className="form-label ms-3">Почта</label>
         <input
           type="email"
-          className="form-control"
+          className="form-control w3-round-xxlarge"
           placeholder="name@example.com"
           value={loginData.email}
           defaultValue={loginData.email}
@@ -57,10 +59,10 @@ export default function Login() {
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Пароль</label>
+        <label className="form-label ms-3">Пароль</label>
         <input
           type="password"
-          className="form-control"
+          className="form-control w3-round-xxlarge"
           placeholder="Пароль"
           value={loginData.password}
           defaultValue={loginData.password}
@@ -72,12 +74,13 @@ export default function Login() {
           }}
         />
       </div>
-      <button className="btn btn-primary" onClick={login}>
+      <button className="btn-green w3-round-xxlarge" onClick={login}>
         Войти
       </button>
-      <button className="btn btn-primary" onClick={navToReg}>
+      <button className="btn-green w3-round-xxlarge mt-0" onClick={navToReg}>
         Регистрация
       </button>
+      <object className='novorossisk_logo' data={nov}></object>
     </div>
   );
 }

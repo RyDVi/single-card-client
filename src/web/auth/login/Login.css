@@ -1,0 +1,21 @@
+.login-screen {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.w3-round-xxlarge {
+    border-radius: 32px !important;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.719) !important;
+}
+
+.novorossisk_logo {
+    width: 400px;
+    height: 400px;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    right: -50vw;
+}
