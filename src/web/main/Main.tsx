@@ -59,10 +59,10 @@ export default function Main() {
   return (
     <div className='main-screen'>
       <div
-        className={`w3-sidebar w3-bar-block w3-card w3-animate-left w-25 p-3 ${leftMenuDisplay}`}
+        className={`sidebar w3-sidebar w3-bar-block w3-card w3-animate-left p-3 ${leftMenuDisplay}`}
       >
         <div className="d-flex justify-content-between">
-          <h3>АААА</h3>
+          <h3>Дополнительно</h3>
           <button
             className="btn"
             onClick={() => {
@@ -73,13 +73,19 @@ export default function Main() {
           </button>
         </div>
         <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
+        <li className="nav-item btn-green w3-round-xxlarge mt-3">
           <Link className="nav-link" to={routes.profile}>
             Профиль
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item btn-green w3-round-xxlarge mt-3">
           <a className="nav-link">Мои средства</a>
+        </li>
+        <li className="nav-item btn-green w3-round-xxlarge mt-3">
+          <a className="nav-link">Достижения</a>
+        </li>
+        <li className="nav-item btn-green w3-round-xxlarge mt-3">
+          <a className="nav-link">Услуги</a>
         </li>
       </ul>
       </div>

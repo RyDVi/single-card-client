@@ -17,6 +17,7 @@
     border: 1px;
     height: 40px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 .btn-green-width {
@@ -45,6 +46,10 @@
 
 .list-group :last-child {
     margin-bottom: 0px;
+}
+
+.nav-link {
+    color: black !important;
 }
 
 .row {
