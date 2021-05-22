@@ -2,58 +2,57 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./CardMaster.css";
 import routes from "../../routes.json";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function CardMaster() {
-  const data = [
-    { id: 1, name: "Card 1", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
-    { id: 2, name: "Card 2", description: "Some description of card" },
+  const cardsData = [
+    {
+      id: 1,
+      imgFront: "/images/elec_nov_front.png",
+      imgBack: "/images/elec_nov_back.png",
+    },
+    {
+      id: 2,
+      imgFront: "/images/ed_card_scholnika_front.png",
+      imgBack: "/images/ed_card_scholnika_back.png",
+    },
   ];
 
   const history = useHistory();
 
   return (
     <div className="card-master">
-      <div className='d-flex'>
-        <button className='btn-back' onClick={history.goBack}>
-          <FontAwesomeIcon icon={faArrowLeft}/>
+      <div className="d-flex">
+        <button className="btn" onClick={history.goBack}>
+          <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <h3 className="text-center">Доступные карты</h3>
       </div>
-      <hr />
-      <div className="card-list list-group">
-        {data.map(({ id, name, description }) => {
+      <div className="card-list">
+        {cardsData.map(({ id, imgBack, imgFront }) => {
           return (
-            <Link
-              to={`${routes.cards}/${id}`}
-              className="list-group-item list-group-item-action"
-              aria-current="true"
-            >
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{name}</h5>
-                <small>something</small>
-              </div>
-              <p className="mb-1">{description}</p>
-              <small>something</small>
-            </Link>
+            <div className="mt-5">
+              <Link
+                to={`${routes.cards}/${id}`}
+                className="mt-5"
+                aria-current="true"
+              >
+                <img className="card-img card-img-front" src={imgFront}></img>
+                <img className="card-img card-img-back" src={imgBack}></img>
+              </Link>
+            </div>
           );
         })}
       </div>
+      <button
+        className="btn-card-add btn-green w3-round-xxlarge"
+        onClick={() => {
+          history.push(`${routes.cards}/create`);
+        }}
+      >
+        Добавить карту
+      </button>
     </div>
   );
 }

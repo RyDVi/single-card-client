@@ -20,6 +20,9 @@ export default function Login() {
   };
 
   const login = async () => {
+    navToMain()
+    return
+    //---
     const response = await fetch("http://10.17.0.214:8000/auth/login/", {
       method: "POST",
       headers: {
