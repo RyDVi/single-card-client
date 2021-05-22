@@ -15,7 +15,7 @@ export default function CardContainer({
 }) {
   const history = useHistory();
   return (
-    <div className="card card-container">
+    <div className="card-container w3-round-large">
       <div className="card-container-header d-flex justify-content-between">
         <h5 className="text-center">{title}</h5>
         {hideBtn ? (

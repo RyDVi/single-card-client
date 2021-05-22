@@ -2,11 +2,12 @@
     --yellow-brand: rgb(249 174 64);
     --green-brand: rgb(43 180 115);
     --blue-brand: rgb(39 170 225);
+    --border-radius-large: 8px;
 }
 
 .App {
     background-color: var(--blue-brand);
-    height: 100vh;
+    height: 100%;
 }
 
 .btn-green {
@@ -26,4 +27,24 @@
 
 .btn-green:active {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.87);
+}
+
+.list-group {
+    background-color: black !important;
+    border-radius: var(--border-radius-large) !important;
+    transform: translate(-5px);
+    box-shadow: 5px 5px 0px 0.1px rgb(160, 106, 26);
+}
+
+.list-group-item {
+    background-color: var(--yellow-brand) !important;
+    margin-bottom: 5px;
+}
+
+.list-group :last-child {
+    margin-bottom: 0px;
+}
+
+.row {
+    background-color: rgb(39, 170, 225);
 }

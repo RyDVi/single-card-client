@@ -101,7 +101,7 @@ export default function Main() {
               title="Карты"
               path={routes.cards}
               cardBody={
-                <ul className="list-group list-group-flush">
+                <ul className="list-group ">
                   {cardsData.map(({ id, name, number, balance }) => {
                     return (
                       <li className="list-group-item d-flex justify-content-between align-items-start">

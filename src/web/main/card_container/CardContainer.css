@@ -1,10 +1,14 @@
 .card-container {
     width: 300px;
+    background-color: var(--green-brand);
+    box-shadow: 5px 5px 0px 0.5px rgba(31, 105, 12, 0.582);
+    padding-bottom: 7px;
 }
 
 .card-container-header {
-    border-bottom: 1px gray solid;
-    border-radius: 0.25rem;
+    /* border-bottom: 1px gray solid; */
+    /* border-radius: 0.25rem; */
+    height: 70px;
 }
 
 .card-container-header h5 {
