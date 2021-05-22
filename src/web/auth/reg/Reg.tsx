@@ -13,6 +13,7 @@ export default function Reg() {
     name: "",
     password: "",
     repeatPassword: "",
+    user_type: "",
   });
   const navToRegCheck = () => {
     history.push(routes.reg_check);
@@ -21,7 +22,7 @@ export default function Reg() {
     if (regData.password !== regData.repeatPassword) {
       return;
     }
-    setShowLoad(true)
+    setShowLoad(true);
     const response = await fetch(
       "http://10.17.0.214:8000/api/v1/auth/registration/",
       {
@@ -34,21 +35,24 @@ export default function Reg() {
           email: regData.email,
           password: regData.password,
           confirm_password: regData.repeatPassword,
-          username: regData.name,
+          name: regData.name,
+          user_type: regData.user_type,
         }),
       }
     );
     if (response.ok) {
-      setShowLoad(false)
+      const result = await response.json();
+      sessionStorage.setItem("email", result.user.email);
+      setShowLoad(false);
       navToRegCheck();
     } else {
-      setShowLoad(false)
+      setShowLoad(false);
       alert("error");
     }
   };
   return (
     <div className="reg-screen">
-      <LoadingScreen visible={showLoad}/>
+      <LoadingScreen visible={showLoad} />
       <h1 className="mb-5 mt-5">Регистрация</h1>
       <div className="mb-3">
         <label className="form-label ms-3">Как к Вам обращаться?</label>
@@ -62,6 +66,21 @@ export default function Reg() {
             setRegData({ ...regData, name: event.target.value.toString() });
           }}
         />
+      </div>
+      <div className="mb-3">
+        <label className="form-label ms-3">Вы гость или житель?</label>
+        <select
+          className="form-select w3-round-xxlarge"
+          onChange={(event) => {
+            setRegData({
+              ...regData,
+              user_type: event.target.value.toString(),
+            });
+          }}
+        >
+          <option value="citizen" selected>Житель</option>
+          <option value="guest">Гость</option>
+        </select>
       </div>
       <div className="mb-3">
         <label className="form-label ms-3">Ваша почта</label>

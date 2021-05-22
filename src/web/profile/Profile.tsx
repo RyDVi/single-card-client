@@ -67,10 +67,11 @@ export default function Profile() {
   useEffect(() => {
     const email = sessionStorage.getItem("email");
     const user_type = sessionStorage.getItem("user_type");
+    const name = sessionStorage.getItem("name");
     setUserData({
       email: email || "",
       user_type: user_type || "",
-      name: "",
+      name: name || '',
       score: "",
     });
   }, [userData.name, userData.email, userData.user_type]);
@@ -91,14 +92,17 @@ export default function Profile() {
     history.push(routes.login);
   };
   const changePassword = async () => {
-    const response = await fetch("http://10.17.0.214:8000/api/v1/auth/change_password/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        "Authorized":`Token ${localStorage.getItem('token')}`
-      },
-      body: JSON.stringify(changePass),
-    });
+    const response = await fetch(
+      "http://10.17.0.214:8000/api/v1/auth/change_password/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          Authorized: `Token ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(changePass),
+      }
+    );
     if (response.ok) {
       const result = await response.json();
       localStorage.setItem("token", result.token);
