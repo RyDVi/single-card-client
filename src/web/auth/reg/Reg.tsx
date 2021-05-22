@@ -13,7 +13,7 @@ export default function Reg() {
     name: "",
     password: "",
     repeatPassword: "",
-    user_type: "",
+    user_type: "citizen",
   });
   const navToRegCheck = () => {
     history.push(routes.reg_check);
