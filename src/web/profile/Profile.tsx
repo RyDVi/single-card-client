@@ -1,9 +1,10 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import "./Profile.css";
 import routes from "../routes.json";
+import LoadingScreen from "../loadingscreen/LoadingScreen";
 
 const gosuslugiSVG = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193 212.1">
@@ -47,16 +48,35 @@ const profileStatuses = {
 
 export default function Profile() {
   const profileAccepted = true;
-  const profileType = profiles.citizen;
   const transportStatus = profileStatuses.novorossiec;
+  const history = useHistory();
+  const [showLoad, setShowLoad] = useState(false);
   const [userData, setUserData] = useState({
-    name: "Иван Иванов",
-    email: "ivanov@mail.ru",
-    score: "1234-5678-9876-5432",
+    name: "",
+    email: "",
+    user_type: "",
+    score: "",
+  });
+  const [showChangePass, setShowChangePass] = useState("none");
+  const [changePass, setChangePass] = useState({
+    old_password: "",
+    new_password: "",
+    confirm_password: "",
   });
 
+  useEffect(() => {
+    const email = sessionStorage.getItem("email");
+    const user_type = sessionStorage.getItem("user_type");
+    setUserData({
+      email: email || "",
+      user_type: user_type || "",
+      name: "",
+      score: "",
+    });
+  }, [userData.name, userData.email, userData.user_type]);
+
   let profileStatusText = "";
-  if (profileType === profiles.citizen) {
+  if (userData.user_type === profiles.citizen) {
     if (!profileAccepted) {
       profileStatusText = "Подтвердите учетную запись жителя";
     } else {
@@ -65,13 +85,35 @@ export default function Profile() {
   } else {
     profileStatusText = "Вы гость города";
   }
-  const history = useHistory();
+
   const exit = () => {
-    localStorage.removeItem('token')
+    localStorage.removeItem("token");
     history.push(routes.login);
+  };
+  const changePassword = async () => {
+    const response = await fetch("http://10.17.0.214:8000/api/v1/auth/change_password/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "Authorized":`Token ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(changePass),
+    });
+    if (response.ok) {
+      const result = await response.json();
+      localStorage.setItem("token", result.token);
+      sessionStorage.setItem("email", result.user.email);
+      sessionStorage.setItem("user_type", result.user.user_type);
+      setShowLoad(false);
+      setShowChangePass("none");
+    } else {
+      setShowLoad(false);
+      alert("error");
+    }
   };
   return (
     <div className="profile-screen">
+      <LoadingScreen visible={showLoad} />
       <div className="d-flex">
         <button className="btn" onClick={history.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} />
@@ -83,7 +125,7 @@ export default function Profile() {
       <hr />
       <div className="d-flex">
         <div className="w-100 text-center">{profileStatusText}</div>
-        {profileType === profiles.citizen && !profileAccepted ? (
+        {userData.user_type === profiles.citizen && !profileAccepted ? (
           <button className="btn btn-gosuslugi">{gosuslugiSVG}</button>
         ) : (
           <></>
@@ -107,7 +149,12 @@ export default function Profile() {
         <div className="text-yellow justify-content-left email-data mt-2">
           {userData.score}
         </div>
-        <button className="w3-round-xxlarge btn-profile mt-5 btn-profile-width">
+        <button
+          className="w3-round-xxlarge btn-profile mt-5 btn-profile-width"
+          onClick={() => {
+            setShowChangePass("block");
+          }}
+        >
           Сменить пароль
         </button>
         <button
@@ -116,6 +163,81 @@ export default function Profile() {
         >
           Выйти
         </button>
+        <div className="w3-modal" style={{ display: showChangePass }}>
+          <div className="w3-modal-content w3-animate-opacity w3-card-4 win-change-pass">
+            <header className="text-center">
+              <h3>Изменение пароля</h3>
+            </header>
+            <div className="w3-container">
+              <div className="mb-3 mt-3">
+                <label className="form-label ms-3">
+                  Введите текущий пароль
+                </label>
+                <input
+                  type="password"
+                  className="form-control w3-round-xxlarge"
+                  placeholder="Текущий пароль"
+                  value={changePass.old_password}
+                  defaultValue={changePass.old_password}
+                  onChange={(event) => {
+                    setChangePass({
+                      ...changePass,
+                      old_password: event.target.value,
+                    });
+                  }}
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label ms-3">Введите новый пароль</label>
+                <input
+                  type="password"
+                  className="form-control w3-round-xxlarge"
+                  placeholder="Новый пароль"
+                  value={changePass.new_password}
+                  defaultValue={changePass.new_password}
+                  onChange={(event) => {
+                    setChangePass({
+                      ...changePass,
+                      new_password: event.target.value,
+                    });
+                  }}
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label ms-3">Повторите пароль</label>
+                <input
+                  type="password"
+                  className="form-control w3-round-xxlarge"
+                  placeholder="Повтор пароля"
+                  value={changePass.confirm_password}
+                  defaultValue={changePass.confirm_password}
+                  onChange={(event) => {
+                    setChangePass({
+                      ...changePass,
+                      confirm_password: event.target.value,
+                    });
+                  }}
+                />
+              </div>
+            </div>
+            <footer className="d-flex flex-column align-items-center">
+              <button
+                className="btn-green w3-round-xxlarge btn-green-width"
+                onClick={changePassword}
+              >
+                Изменить
+              </button>
+              <button
+                className="btn-green w3-round-xxlarge btn-green-width mt-3 mb-3"
+                onClick={() => {
+                  setShowChangePass("none");
+                }}
+              >
+                Отмена
+              </button>
+            </footer>
+          </div>
+        </div>
       </div>
     </div>
   );

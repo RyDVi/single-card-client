@@ -2,7 +2,9 @@
     --yellow-brand: rgb(249 174 64);
     --green-brand: rgb(43 180 115);
     --blue-brand: rgb(39 170 225);
+    --green2-brand: rgb(0, 165, 155);
     --border-radius-large: 8px;
+    --modal-width: 400px;
 }
 
 .App {

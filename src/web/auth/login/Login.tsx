@@ -54,7 +54,8 @@ export default function Login() {
     if (response.ok) {
       const result = await response.json();
       localStorage.setItem("token", result.token);
-      sessionStorage.setItem("user", result.user);
+      sessionStorage.setItem("email", result.user.email);
+      sessionStorage.setItem("user_type", result.user.user_type);
       setShowLoad(false);
       navToMain();
     } else {

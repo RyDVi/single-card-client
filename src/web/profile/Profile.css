@@ -51,3 +51,9 @@
 .btn-profile:active {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.87);
 }
+
+.win-change-pass {
+    background-color: var(--green2-brand);
+    border-radius: 24px;
+    width: var(--modal-width);
+}
