@@ -82,7 +82,7 @@ export default function Main() {
             <a className="nav-link">Мои средства</a>
           </li>
           <li className="nav-item btn-green w3-round-xxlarge mt-3">
-            <a className="nav-link">Достижения</a>
+            <Link className="nav-link" to={routes.achievements}>Достижения</Link>
           </li>
           <li className="nav-item btn-green w3-round-xxlarge mt-3">
             <a className="nav-link">Услуги</a>
