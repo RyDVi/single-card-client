@@ -45,7 +45,7 @@ export default function Main() {
       done: false,
     },
     {
-      id: 1,
+      id: 2,
       name: "Покупка сувениров с единой картой",
       img: "",
       description: "Купите сувенир у одного из партнеров с картой",
@@ -57,7 +57,7 @@ export default function Main() {
 
   const history = useHistory();
   return (
-    <div className='main-screen'>
+    <div className="main-screen">
       <div
         className={`sidebar w3-sidebar w3-bar-block w3-card w3-animate-left p-3 ${leftMenuDisplay}`}
       >
@@ -69,25 +69,25 @@ export default function Main() {
               setLeftMenu("d-none");
             }}
           >
-            <FontAwesomeIcon icon={faTimes}/>
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
         <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item btn-green w3-round-xxlarge mt-3">
-          <Link className="nav-link" to={routes.profile}>
-            Профиль
-          </Link>
-        </li>
-        <li className="nav-item btn-green w3-round-xxlarge mt-3">
-          <a className="nav-link">Мои средства</a>
-        </li>
-        <li className="nav-item btn-green w3-round-xxlarge mt-3">
-          <a className="nav-link">Достижения</a>
-        </li>
-        <li className="nav-item btn-green w3-round-xxlarge mt-3">
-          <a className="nav-link">Услуги</a>
-        </li>
-      </ul>
+          <li className="nav-item btn-green w3-round-xxlarge mt-3">
+            <Link className="nav-link" to={routes.profile}>
+              Профиль
+            </Link>
+          </li>
+          <li className="nav-item btn-green w3-round-xxlarge mt-3">
+            <a className="nav-link">Мои средства</a>
+          </li>
+          <li className="nav-item btn-green w3-round-xxlarge mt-3">
+            <a className="nav-link">Достижения</a>
+          </li>
+          <li className="nav-item btn-green w3-round-xxlarge mt-3">
+            <a className="nav-link">Услуги</a>
+          </li>
+        </ul>
       </div>
 
       <header className="p-2">
@@ -97,7 +97,7 @@ export default function Main() {
             setLeftMenu("d-block");
           }}
         >
-          <FontAwesomeIcon icon={faBars} style={{color:'black'}}/>
+          <FontAwesomeIcon icon={faBars} style={{ color: "black" }} />
         </button>
       </header>
       <div className="container-md">
@@ -110,7 +110,10 @@ export default function Main() {
                 <ul className="list-group ">
                   {cardsData.map(({ id, name, number, balance }) => {
                     return (
-                      <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <li
+                        key={id}
+                        className="list-group-item d-flex justify-content-between align-items-start"
+                      >
                         <div className="ms-2 me-auto">
                           <div className="fw-bold">{name}</div>
                           {number}
@@ -133,7 +136,10 @@ export default function Main() {
                 <ul className="list-group list-group-flush">
                   {newsData.map(({ id, title, description }) => {
                     return (
-                      <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <li
+                        key={id}
+                        className="list-group-item d-flex justify-content-between align-items-start"
+                      >
                         <div className="ms-2 me-auto">
                           <div className="fw-bold">{title}</div>
                           {description}
@@ -153,7 +159,10 @@ export default function Main() {
                 <ul className="list-group list-group-flush">
                   {lastAchievements.map(({ id, name, description }) => {
                     return (
-                      <li className="list-group-item d-flex justify-content-between align-items-start">
+                      <li
+                        key={id}
+                        className="list-group-item d-flex justify-content-between align-items-start"
+                      >
                         <div className="ms-2 me-auto">
                           <div className="fw-bold">{name}</div>
                           {description}
