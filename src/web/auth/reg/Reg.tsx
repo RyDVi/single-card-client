@@ -3,9 +3,11 @@ import { useHistory } from "react-router-dom";
 import "./Reg.css";
 import routes from "../../routes.json";
 import { stringify } from "querystring";
+import LoadingScreen from "../../loadingscreen/LoadingScreen";
 
 export default function Reg() {
   const history = useHistory();
+  const [showLoad, setShowLoad] = useState(false);
   const [regData, setRegData] = useState({
     email: "",
     name: "",
@@ -19,6 +21,7 @@ export default function Reg() {
     if (regData.password !== regData.repeatPassword) {
       return;
     }
+    setShowLoad(true)
     const response = await fetch(
       "http://10.17.0.214:8000/api/v1/auth/registration/",
       {
@@ -31,19 +34,21 @@ export default function Reg() {
           email: regData.email,
           password: regData.password,
           confirm_password: regData.repeatPassword,
+          username: regData.name,
         }),
       }
     );
     if (response.ok) {
-      const result = response.json();
-      console.log(result);
+      setShowLoad(false)
       navToRegCheck();
     } else {
+      setShowLoad(false)
       alert("error");
     }
   };
   return (
     <div className="reg-screen">
+      <LoadingScreen visible={showLoad}/>
       <h1 className="mb-5 mt-5">Регистрация</h1>
       <div className="mb-3">
         <label className="form-label ms-3">Как к Вам обращаться?</label>

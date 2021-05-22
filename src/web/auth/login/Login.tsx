@@ -25,13 +25,14 @@ export default function Login() {
     history.push(routes.main);
   };
 
-  const checkFields = () => {
+  const checkFields = function () {
     if (!loginData.email || !loginData.password) {
-      console.log(loginData)
-      if (!loginData.email) setChecks({ ...checks, email: "is-invalid" });
-      else setChecks({ ...checks, email: "is-valid" });
-      if (!loginData.password) setChecks({ ...checks, password: "is-invalid" });
-      else setChecks({ ...checks, password: "is-valid" });
+      console.log(loginData);
+      let check = {
+        email: loginData.email ? "is-valid" : "is-invalid",
+        password: loginData.password ? "is-valid" : "is-invalid",
+      };
+      setChecks(check);
       return false;
     }
     return true;
@@ -39,8 +40,8 @@ export default function Login() {
 
   const login = async () => {
     if (!checkFields()) return;
-    setShowLoad(true)
-    const response = await fetch("http://10.17.0.214:8000/auth/login/", {
+    setShowLoad(true);
+    const response = await fetch("http://10.17.0.214:8000/api/v1/auth/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -53,17 +54,16 @@ export default function Login() {
     if (response.ok) {
       const result = await response.json();
       localStorage.setItem("token", result.token);
-      setShowLoad(false)
+      setShowLoad(false);
       navToMain();
     } else {
-      setShowLoad(false)
+      setShowLoad(false);
       alert("error");
     }
-    
   };
   return (
     <div className="login-screen">
-      <LoadingScreen visible={showLoad}/>
+      <LoadingScreen visible={showLoad} />
       <h1 className="mb-5 mt-5 text-center">Авторизация</h1>
       <div className="mb-3 grade-zindex">
         <label className="form-label ms-3">Почта</label>
@@ -78,7 +78,6 @@ export default function Login() {
               ...loginData,
               email: event.target.value.toString(),
             });
-            checkFields()
           }}
         />
       </div>
@@ -95,7 +94,6 @@ export default function Login() {
               ...loginData,
               password: event.target.value,
             });
-            checkFields()
           }}
         />
       </div>
