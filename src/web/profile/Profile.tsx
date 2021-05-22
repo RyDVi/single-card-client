@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import "./Profile.css";
 import routes from "../routes.json";
 import LoadingScreen from "../loadingscreen/LoadingScreen";
+import QRCode from "react-qr-code";
 
 const gosuslugiSVG = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193 212.1">
@@ -56,8 +57,10 @@ export default function Profile() {
     user_type: "",
     balance: 0,
     is_esia_confirm: false,
+    account_number: "",
   });
   const [showChangePass, setShowChangePass] = useState("none");
+  const [showQR, setShowQR] = useState("none");
   const [changePass, setChangePass] = useState({
     old_password: "",
     new_password: "",
@@ -69,6 +72,7 @@ export default function Profile() {
     const user_type = sessionStorage.getItem("user_type");
     const name = sessionStorage.getItem("name");
     const is_esia_confirm = sessionStorage.getItem("is_esia_confirm");
+    const account_number = sessionStorage.getItem("account_number");
     fetch("http://10.17.0.214:8000/api/v1/billing/balance/", {
       method: "GET",
       headers: {
@@ -84,10 +88,14 @@ export default function Profile() {
             user_type: user_type || "",
             name: name || "",
             balance: result.balance,
-            is_esia_confirm: is_esia_confirm == "true",
+            is_esia_confirm: is_esia_confirm === "true",
+            account_number: account_number || "",
           });
           setShowLoad(false);
         });
+      } else if (response.status === 401) {
+        setShowLoad(false);
+        history.push(routes.login);
       } else {
         setShowLoad(false);
         alert("error");
@@ -194,12 +202,46 @@ export default function Profile() {
         <div className="text-yellow justify-content-left email-data">
           {userData.email}
         </div>
-        <div className="w3-round-xxlarge title-circle-yellow mt-4">Остаток</div>
+        <div className="w3-round-xxlarge title-circle-yellow mt-5">
+          Индивидуальный счет
+        </div>
+        <div className="text-yellow fs-3">{userData.account_number}</div>
+        <button
+          className="w3-round-xxlarge btn-profile mb-4"
+          onClick={() => {
+            setShowQR("block");
+          }}
+        >
+          QRCode
+        </button>
+        <div className="w3-modal" style={{ display: showQR }}>
+          <div className="w3-modal-content w3-animate-opacity w3-card-4 win-change-pass">
+            <header className="text-center">
+              <h3>QR-код вашего счета</h3>
+            </header>
+            <div className="w3-container d-flex align-items-center justify-content-center">
+              <div style={{ width: "fit-content", height: "fit-content" }}>
+                <QRCode value={userData.account_number} />
+              </div>
+            </div>
+            <footer className="d-flex flex-column align-items-center">
+              <button
+                className="btn-green w3-round-xxlarge btn-green-width mt-3 mb-3"
+                onClick={() => {
+                  setShowQR("none");
+                }}
+              >
+                Закрыть
+              </button>
+            </footer>
+          </div>
+        </div>
+        <div className="w3-round-xxlarge title-circle-yellow mt-5">Остаток</div>
         <div className="text-yellow justify-content-left email-data mt-2 fs-1 text-center">
           {userData.balance} <FontAwesomeIcon icon={faRubleSign} />
         </div>
         <button
-          className="w3-round-xxlarge btn-profile mt-5 btn-profile-width"
+          className="w3-round-xxlarge btn-profile mt-3"
           onClick={() => {
             history.push(routes.pay);
           }}
