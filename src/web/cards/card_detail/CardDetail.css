@@ -2,7 +2,9 @@
     height: 200px;
     width: 300px;
     border: 1px solid;
-    border-radius: 40px;
+    border-radius: 20px;
+    background-color: var(--yellow-brand);
+    text-align: center;
 }
 
 .plastic-card-header {
@@ -16,13 +18,14 @@
 }
 
 .plastic-card-header span {
-    color: gray;
+    color: black;
 }
 
 .plastic-card-mline {
     width: 100%;
     height: 48px;
-    background-color: gray;
+    background-color: black;
+    color: white;
 }
 
 .plastic-card-mline h3 {
@@ -41,4 +44,13 @@
     transform: translate(-50%);
     width: 300px;
     height: 48px;
+}
+
+.btn-fill-money {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+    width: 300px;
 }

@@ -35,28 +35,23 @@ export default function CardDetail() {
   });
   const history = useHistory();
   return (
-    <div className="container-fluid">
+    <div className="">
       <div className="d-flex">
-        {window.innerWidth > 700 ? (
-          <></>
-        ) : (
-          <button className="btn-back" onClick={history.goBack}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
-        )}
-
+        <button className="btn" onClick={history.goBack}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
         <h2 className="w-100 m-2 text-center">Информация о карте</h2>
       </div>
       <div className="w-100 d-flex justify-content-center">
         <div className="plastic-card">
           <div className="plastic-card-header">
-            <h2>{cardData.balance} Р</h2>
+            <h2>{cardData.balance} Руб.</h2>
             <span>Последняя поездка: {cardData.history[0].date}</span>
           </div>
           <div className="plastic-card-mline">
             <h3>№{cardData.number}</h3>
           </div>
-          <div className='mt-5'>
+          <div className="mt-5">
             <CardContainer
               title="История операций"
               path="cards"
@@ -80,7 +75,9 @@ export default function CardDetail() {
           </div>
         </div>
       </div>
-      <button className='btn btn-primary btn-fill'>Пополнить</button>
+      <button className="btn-fill-money btn-green w3-round-xxlarge">
+        Пополнить
+      </button>
     </div>
   );
 }
