@@ -6,7 +6,7 @@ export default function RegCheck() {
   const history = useHistory();
 
   return (
-    <div>
+    <div className='reg-check-screen'>
       <h1 className="mb-5 mt-5 text-center">Подтверждение регистрации</h1>
       <div className="alert alert-primary" role="alert">
         На указанную почту был выслан код подтверждения. Введите его в поле ниже.

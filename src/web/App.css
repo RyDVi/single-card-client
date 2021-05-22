@@ -8,6 +8,8 @@
 .App {
     background-color: var(--blue-brand);
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-green {

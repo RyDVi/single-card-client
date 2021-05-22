@@ -2,6 +2,11 @@
     --profile-width: 300px;
 }
 
+.profile-screen {
+    height: 100vh;
+    width: calc(var(--profile-width) + 100px);
+}
+
 .btn-gosuslugi {
     width: 100px;
     height: 100px;

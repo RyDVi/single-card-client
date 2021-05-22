@@ -66,7 +66,7 @@ export default function Profile() {
   }
   const history = useHistory();
   return (
-    <div className="container">
+    <div className="profile-screen container">
       <div className="d-flex">
         <button className="btn-back" onClick={history.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} />

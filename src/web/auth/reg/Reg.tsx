@@ -38,7 +38,7 @@ export default function Reg() {
     }
   };
   return (
-    <div>
+    <div className='reg-screen'>
       <h1 className="mb-5 mt-5">Регистрация</h1>
       <div className="mb-3">
         <label className="form-label ms-3">Как к Вам обращаться?</label>
