@@ -59,7 +59,7 @@ export default function Main() {
   return (
     <div className='main-screen'>
       <div
-        className={`w3-sidebar w3-bar-block w3-card w3-animate-left p-3 ${leftMenuDisplay}`}
+        className={`w3-sidebar w3-bar-block w3-card w3-animate-left w-25 p-3 ${leftMenuDisplay}`}
       >
         <div className="d-flex justify-content-between">
           <h3>АААА</h3>
