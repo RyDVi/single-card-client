@@ -4,9 +4,9 @@ import { Redirect } from "react-router-dom";
 import routes from "../routes.json";
 
 export default function Home() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  if (loggedIn) {
-    return <Redirect to={routes.map} />;
+  let token = localStorage.getItem('token')
+  if (token) {
+    return <Redirect to={routes.main} />;
   }
   return <Redirect to={routes.login} />;
 }

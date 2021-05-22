@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 
 import { hot } from "react-hot-loader";
@@ -31,7 +31,7 @@ function App() {
             <MapContainer />
           </Route>
           <Route path={routes.cards}>
-            <Cards/>
+            <Cards />
           </Route>
           <Route path={routes.main}>
             <Main />
