@@ -69,16 +69,6 @@ export default function Profile() {
     const user_type = sessionStorage.getItem("user_type");
     const name = sessionStorage.getItem("name");
     const is_esia_confirm = sessionStorage.getItem("is_esia_confirm");
-    setUserData({
-      email: email || "",
-      user_type: user_type || "",
-      name: name || "",
-      balance: 0,
-      is_esia_confirm: is_esia_confirm == "true",
-    });
-  }, [userData.name, userData.email, userData.user_type]);
-
-  useEffect(() => {
     fetch("http://10.17.0.214:8000/api/v1/billing/balance/", {
       method: "GET",
       headers: {
@@ -89,7 +79,13 @@ export default function Profile() {
       if (response.ok) {
         response.json().then((result) => {
           console.log(result);
-          setUserData({ ...userData, balance: result.balance });
+          setUserData({
+            email: email || "",
+            user_type: user_type || "",
+            name: name || "",
+            balance: result.balance,
+            is_esia_confirm: is_esia_confirm == "true",
+          });
           setShowLoad(false);
         });
       } else {
@@ -97,7 +93,7 @@ export default function Profile() {
         alert("error");
       }
     });
-  }, [userData.balance]);
+  }, [userData.name, userData.email, userData.user_type, userData.balance]);
   console.log(userData);
   let profileStatusText = "";
   if (userData.user_type === profiles.citizen) {

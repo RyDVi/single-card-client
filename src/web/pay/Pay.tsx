@@ -19,18 +19,23 @@ export default function Pay() {
 
   const pay = async () => {
     setShowLoad(true);
-    const response = await fetch("http://10.17.0.214:8000/api/v1/auth/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        transaction_sum: payData.transaction_sum,
-      }),
-    });
+    const response = await fetch(
+      "http://10.17.0.214:8000/api/v1/billing/recharge/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          transaction_sum: payData.transaction_sum,
+        }),
+      }
+    );
     if (response.ok) {
       const result = await response.json();
       setShowLoad(false);
+      history.goBack()
     } else {
       setShowLoad(false);
       alert("error");
@@ -126,20 +131,22 @@ export default function Pay() {
           }}
         />
       </div>
-      <button
-        className="btn-green w3-round-xxlarge grade-zindex btn-profile-width"
-        onClick={pay}
-      >
-        Пополнить
-      </button>
-      <button
-        className="btn-green w3-round-xxlarge mt-0 grade-zindex  btn-profile-width"
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Отмена
-      </button>
+      <div className="d-flex flex-column w-100 align-items-center">
+        <button
+          className="btn-green w3-round-xxlarge grade-zindex btn-profile-width"
+          onClick={pay}
+        >
+          Пополнить
+        </button>
+        <button
+          className="btn-green w3-round-xxlarge mt-0 grade-zindex btn-profile-width mt-2"
+          onClick={() => {
+            history.goBack();
+          }}
+        >
+          Отмена
+        </button>
+      </div>
     </div>
   );
 }
