@@ -19,26 +19,31 @@ export default function Reg() {
     if (regData.password !== regData.repeatPassword) {
       return;
     }
-    const response = await fetch("http://10.17.0.214:8000/auth/registration/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        email: regData.email,
-        password: regData.password,
-      }),
-    });
+    const response = await fetch(
+      "http://10.17.0.214:8000/api/v1/auth/registration/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: regData.email,
+          password: regData.password,
+          confirm_password: regData.repeatPassword,
+        }),
+      }
+    );
     if (response.ok) {
       const result = response.json();
       console.log(result);
-      navToRegCheck()
+      navToRegCheck();
     } else {
       alert("error");
     }
   };
   return (
-    <div className='reg-screen'>
+    <div className="reg-screen">
       <h1 className="mb-5 mt-5">Регистрация</h1>
       <div className="mb-3">
         <label className="form-label ms-3">Как к Вам обращаться?</label>
@@ -98,7 +103,10 @@ export default function Reg() {
       <button className="btn-green w3-round-xxlarge" onClick={reg}>
         Зарегистрироваться
       </button>
-      <button className="btn-green w3-round-xxlarge mt-0" onClick={history.goBack}>
+      <button
+        className="btn-green w3-round-xxlarge mt-0"
+        onClick={history.goBack}
+      >
         Назад
       </button>
     </div>
