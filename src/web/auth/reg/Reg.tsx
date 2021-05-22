@@ -41,10 +41,10 @@ export default function Reg() {
     <div>
       <h1 className="mb-5 mt-5">Регистрация</h1>
       <div className="mb-3">
-        <label className="form-label">Как к Вам обращаться?</label>
+        <label className="form-label ms-3">Как к Вам обращаться?</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control w3-round-xxlarge"
           placeholder="Иван Иванов"
           value={regData.name}
           defaultValue={regData.name}
@@ -54,10 +54,10 @@ export default function Reg() {
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Ваша почта</label>
+        <label className="form-label ms-3">Ваша почта</label>
         <input
           type="email"
-          className="form-control"
+          className="form-control w3-round-xxlarge"
           placeholder="name@example.com"
           value={regData.email}
           defaultValue={regData.email}
@@ -67,10 +67,10 @@ export default function Reg() {
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Пароль</label>
+        <label className="form-label ms-3">Пароль</label>
         <input
           type="password"
-          className="form-control"
+          className="form-control w3-round-xxlarge"
           placeholder="Пароль"
           value={regData.password}
           defaultValue={regData.password}
@@ -80,10 +80,10 @@ export default function Reg() {
         />
       </div>
       <div className="mb-3">
-        <label className="form-label">Повторите пароль</label>
+        <label className="form-label ms-3">Повторите пароль</label>
         <input
           type="password"
-          className="form-control"
+          className="form-control w3-round-xxlarge"
           placeholder="Повторите пароль"
           value={regData.repeatPassword}
           defaultValue={regData.repeatPassword}
@@ -95,10 +95,10 @@ export default function Reg() {
           }}
         />
       </div>
-      <button className="btn btn-primary" onClick={reg}>
+      <button className="btn-green w3-round-xxlarge" onClick={reg}>
         Зарегистрироваться
       </button>
-      <button className="btn btn-primary" onClick={history.goBack}>
+      <button className="btn-green w3-round-xxlarge mt-0" onClick={history.goBack}>
         Назад
       </button>
     </div>
