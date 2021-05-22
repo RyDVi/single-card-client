@@ -1,6 +1,6 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { faArrowLeft, faRubleSign } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router";
 import "./Profile.css";
 import routes from "../routes.json";
@@ -55,7 +55,7 @@ export default function Profile() {
     name: "",
     email: "",
     user_type: "",
-    score: "",
+    balance: 0,
   });
   const [showChangePass, setShowChangePass] = useState("none");
   const [changePass, setChangePass] = useState({
@@ -71,10 +71,31 @@ export default function Profile() {
     setUserData({
       email: email || "",
       user_type: user_type || "",
-      name: name || '',
-      score: "",
+      name: name || "",
+      balance: 0,
     });
   }, [userData.name, userData.email, userData.user_type]);
+
+  useEffect(() => {
+    fetch("http://10.17.0.214:8000/api/v1/billing/balance/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((result) => {
+          console.log(result);
+          setUserData({ ...userData, balance: result.balance });
+          setShowLoad(false);
+        });
+      } else {
+        setShowLoad(false);
+        alert("error");
+      }
+    });
+  }, [userData.balance]);
 
   let profileStatusText = "";
   if (userData.user_type === profiles.citizen) {
@@ -147,11 +168,9 @@ export default function Profile() {
         <div className="text-yellow justify-content-left email-data">
           {userData.email}
         </div>
-        <div className="w3-round-xxlarge title-circle-yellow mt-4">
-          Индивидуальный счет
-        </div>
-        <div className="text-yellow justify-content-left email-data mt-2">
-          {userData.score}
+        <div className="w3-round-xxlarge title-circle-yellow mt-4">Остаток</div>
+        <div className="text-yellow justify-content-left email-data mt-2 fs-1 text-center">
+          {userData.balance} <FontAwesomeIcon icon={faRubleSign} />
         </div>
         <button
           className="w3-round-xxlarge btn-profile mt-5 btn-profile-width"
