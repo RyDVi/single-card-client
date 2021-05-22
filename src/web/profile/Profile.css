@@ -1,0 +1,48 @@
+:root {
+    --profile-width: 300px;
+}
+
+.btn-gosuslugi {
+    width: 100px;
+    height: 100px;
+}
+
+.title-circle-yellow {
+    background-color: var(--yellow-brand);
+    font-size: 18px;
+    height: 30px;
+    width: var(--profile-width);
+    text-align: center;
+}
+
+.text-yellow {
+    color: var(--yellow-brand)
+}
+
+.name-data {
+    width: var(--profile-width);
+    justify-content: space-between;
+}
+
+.email-data {
+    width: var(--profile-width);
+}
+
+.btn-profile {
+    background-color: var(--green-brand);
+    border: 1px;
+    height: 30px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-profile-width {
+    width: var(--profile-width);
+}
+
+.btn-profile:hover {
+    background-color: rgb(81, 189, 153);
+}
+
+.btn-profile:active {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.87);
+}

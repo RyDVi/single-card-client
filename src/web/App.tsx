@@ -12,6 +12,7 @@ import Cards from "./cards/Cards";
 import Main from "./main/Main";
 import News from "./news/News";
 import Achievements from "./achievements/Achievements";
+import Profile from "./profile/Profile";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path={routes.achievements}>
             <Achievements />
+          </Route>
+          <Route path={routes.profile}>
+            <Profile />
           </Route>
           {/* !Не ставить ниже Home остальные маршруты! */}
           <Route path={routes.home}>

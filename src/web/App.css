@@ -1,3 +1,10 @@
+:root {
+    --yellow-brand: rgb(249 174 64);
+    --green-brand: rgb(43 180 115);
+    --blue-brand: rgb(39 170 225);
+}
+
 .App {
-    /* text-align: center; */
+    background-color: var(--blue-brand);
+    height: 100vh;
 }

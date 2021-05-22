@@ -8,5 +8,6 @@
     "card": "/cards/:id",
     "main": "/main",
     "news": "/news",
-    "achievements": "/achievements"
+    "achievements": "/achievements",
+    "profile": "/profile"
 }

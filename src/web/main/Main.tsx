@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Main.css";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import routes from "../routes.json";
 import CardContainer from "./card_container/CardContainer";
+import MainSidebar from "../profile/main_sidebar/MainSidebar";
+import "w3-css";
 
 export default function Main() {
   const cardsData = [
@@ -51,15 +53,46 @@ export default function Main() {
     },
   ];
 
-  const history = useHistory();
+  const [leftMenuDisplay, setLeftMenu] = useState("d-none");
 
+  const history = useHistory();
   return (
     <div>
+      <div
+        className={`w3-sidebar w3-bar-block w3-card w3-animate-left p-3 ${leftMenuDisplay}`}
+      >
+        <div className="d-flex justify-content-between">
+          <h3>АААА</h3>
+          <button
+            className="btn"
+            onClick={() => {
+              setLeftMenu("d-none");
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
+        </div>
+        <ul className="nav nav-pills flex-column mb-auto">
+        <li className="nav-item">
+          <Link className="nav-link" to={routes.profile}>
+            Профиль
+          </Link>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link">Мои средства</a>
+        </li>
+      </ul>
+      </div>
+
       <header className="p-2">
-        <button className="btn btn-outline-primary" onClick={() => {}}>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => {
+            setLeftMenu("d-block");
+          }}
+        >
           <FontAwesomeIcon icon={faBars} />
         </button>
-        <span className="badge bg-primary text-center">112 баллов</span>
       </header>
       <div className="container-md">
         <div className="row">
