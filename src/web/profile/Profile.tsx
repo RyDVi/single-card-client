@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import "./Profile.css";
+import routes from "../routes.json";
 
 const gosuslugiSVG = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193 212.1">
@@ -65,6 +66,10 @@ export default function Profile() {
     profileStatusText = "Вы гость города";
   }
   const history = useHistory();
+  const exit = () => {
+    localStorage.removeItem('token')
+    history.push(routes.login);
+  };
   return (
     <div className="profile-screen">
       <div className="d-flex">
@@ -77,7 +82,7 @@ export default function Profile() {
       </div>
       <hr />
       <div className="d-flex">
-        <div>{profileStatusText}</div>
+        <div className="w-100 text-center">{profileStatusText}</div>
         {profileType === profiles.citizen && !profileAccepted ? (
           <button className="btn btn-gosuslugi">{gosuslugiSVG}</button>
         ) : (
@@ -102,8 +107,15 @@ export default function Profile() {
         <div className="text-yellow justify-content-left email-data mt-2">
           {userData.score}
         </div>
-        <button className="w3-round-xxlarge btn-profile mt-5 btn-profile-width">Сменить пароль</button>
-        <button className="w3-round-xxlarge btn-profile mt-2 btn-profile-width">Назад</button>
+        <button className="w3-round-xxlarge btn-profile mt-5 btn-profile-width">
+          Сменить пароль
+        </button>
+        <button
+          className="w3-round-xxlarge btn-profile mt-2 btn-profile-width btn-danger"
+          onClick={exit}
+        >
+          Выйти
+        </button>
       </div>
     </div>
   );

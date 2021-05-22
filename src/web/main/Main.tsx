@@ -69,7 +69,7 @@ export default function Main() {
               setLeftMenu("d-none");
             }}
           >
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes}/>
           </button>
         </div>
         <ul className="nav nav-pills flex-column mb-auto">
@@ -92,12 +92,12 @@ export default function Main() {
 
       <header className="p-2">
         <button
-          className="btn btn-outline-primary"
+          className="btn btn-success"
           onClick={() => {
             setLeftMenu("d-block");
           }}
         >
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={faBars} style={{color:'black'}}/>
         </button>
       </header>
       <div className="container-md">

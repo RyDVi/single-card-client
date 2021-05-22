@@ -16,8 +16,6 @@ export default function Reg() {
     history.push(routes.reg_check);
   };
   const reg = async () => {
-    navToRegCheck()
-    return
     if (regData.password !== regData.repeatPassword) {
       return;
     }

@@ -20,9 +20,6 @@ export default function Login() {
   };
 
   const login = async () => {
-    navToMain()
-    return
-    //---
     const response = await fetch("http://10.17.0.214:8000/auth/login/", {
       method: "POST",
       headers: {
@@ -45,7 +42,7 @@ export default function Login() {
   return (
     <div className='login-screen'>
       <h1 className="mb-5 mt-5 text-center">Авторизация</h1>
-      <div className="mb-3">
+      <div className="mb-3 grade-zindex">
         <label className="form-label ms-3">Почта</label>
         <input
           type="email"
@@ -61,7 +58,7 @@ export default function Login() {
           }}
         />
       </div>
-      <div className="mb-3">
+      <div className="mb-3 grade-zindex">
         <label className="form-label ms-3">Пароль</label>
         <input
           type="password"
@@ -77,10 +74,10 @@ export default function Login() {
           }}
         />
       </div>
-      <button className="btn-green w3-round-xxlarge" onClick={login}>
+      <button className="btn-green w3-round-xxlarge grade-zindex" onClick={login}>
         Войти
       </button>
-      <button className="btn-green w3-round-xxlarge mt-0" onClick={navToReg}>
+      <button className="btn-green w3-round-xxlarge mt-0 grade-zindex" onClick={navToReg}>
         Регистрация
       </button>
       <object className='novorossisk_logo' data={nov}></object>
