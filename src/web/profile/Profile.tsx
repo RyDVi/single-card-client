@@ -82,7 +82,6 @@ export default function Profile() {
     }).then((response) => {
       if (response.ok) {
         response.json().then((result) => {
-          console.log(result);
           setUserData({
             email: email || "",
             user_type: user_type || "",
@@ -102,7 +101,6 @@ export default function Profile() {
       }
     });
   }, [userData.name, userData.email, userData.user_type, userData.balance]);
-  console.log(userData);
   let profileStatusText = "";
   if (userData.user_type === profiles.citizen) {
     if (!userData.is_esia_confirm) {
@@ -195,19 +193,15 @@ export default function Profile() {
         <div className="w3-round-xxlarge title-circle-yellow">
           Контактные данные
         </div>
-        <div className="d-flex mt-2 text-yellow name-data">
-          <div>{userData.name}</div>
-          <button className="w3-round-xxlarge btn-profile">Изменить</button>
-        </div>
-        <div className="text-yellow justify-content-left email-data">
-          {userData.email}
-        </div>
+        <div className="fs-3 text-yellow">{userData.name}</div>
+        <div className="text-yellow fs-3">{userData.email}</div>
+        <button className="w3-round-xxlarge btn-profile mt-2">Изменить</button>
         <div className="w3-round-xxlarge title-circle-yellow mt-5">
           Индивидуальный счет
         </div>
         <div className="text-yellow fs-3">{userData.account_number}</div>
         <button
-          className="w3-round-xxlarge btn-profile mb-4"
+          className="w3-round-xxlarge btn-profile"
           onClick={() => {
             setShowQR("block");
           }}
@@ -241,7 +235,7 @@ export default function Profile() {
           {userData.balance} <FontAwesomeIcon icon={faRubleSign} />
         </div>
         <button
-          className="w3-round-xxlarge btn-profile mt-3"
+          className="w3-round-xxlarge btn-profile mt-1"
           onClick={() => {
             history.push(routes.pay);
           }}
