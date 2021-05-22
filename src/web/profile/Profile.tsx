@@ -68,7 +68,7 @@ export default function Profile() {
   return (
     <div className="profile-screen">
       <div className="d-flex">
-        <button className="btn-back" onClick={history.goBack}>
+        <button className="btn" onClick={history.goBack}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <div className="w-100 mt-2">
