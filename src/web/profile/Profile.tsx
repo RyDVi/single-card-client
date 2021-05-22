@@ -98,7 +98,7 @@ export default function Profile() {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
-          Authorized: `Token ${localStorage.getItem("token")}`,
+          Authorization: `Token ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(changePass),
       }

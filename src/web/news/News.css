@@ -1,0 +1,35 @@
+.news-card {
+    width: 300px;
+    background-color: white;
+    border-radius: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.news-card header {
+    text-align: center;
+    padding: 10px;
+}
+
+.news-card img {
+    height: 150px;
+    object-fit: cover;
+    width: inherit;
+}
+
+.news-card p {
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.more-details-btn {
+    background-color: gray;
+    border-radius: 48px;
+    text-align: center;
+    width: 80px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
