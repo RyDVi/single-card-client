@@ -1,6 +1,6 @@
 import { faArrowLeft, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import "./Services.css";
 import routes from "../routes.json";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function News() {
   const history = useHistory();
+  const [searchText, setSearchText] = useState("");
 
   const tourismData = [
     {
@@ -32,7 +33,12 @@ export default function News() {
   return (
     <div className="news-screen">
       <div className="d-flex">
-        <button className="btn" onClick={()=>{history.push(routes.main)}}>
+        <button
+          className="btn"
+          onClick={() => {
+            history.push(routes.main);
+          }}
+        >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <div className="w-100 mt-2">
@@ -40,6 +46,19 @@ export default function News() {
         </div>
       </div>
       <div className="w-100 d-flex flex-column align-items-center mb-4">
+        <div className="mb-3 grade-zindex">
+          <input
+            type="text"
+            className="form-control w3-round-xxlarge"
+            style={{width:'var(--card-master-width)'}}
+            placeholder="Поиск..."
+            value={searchText}
+            defaultValue={searchText}
+            onChange={(event) => {
+              setSearchText(event.target.value);
+            }}
+          />
+        </div>
         <div className="w3-round-xxlarge title-circle-yellow mt-4">Туризм</div>
         {tourismData.map(({ id, name, description, discount }) => {
           return (
