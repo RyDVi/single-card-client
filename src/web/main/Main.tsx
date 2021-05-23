@@ -84,6 +84,9 @@ export default function Main() {
           <li className="nav-item btn-green w3-round-xxlarge mt-3">
             <Link className="nav-link" to={routes.services}>Услуги</Link>
           </li>
+          <li className="nav-item btn-green w3-round-xxlarge mt-3">
+            <Link className="nav-link" to={routes.map}>Маршрутные карты</Link>
+          </li>
         </ul>
       </div>
 
