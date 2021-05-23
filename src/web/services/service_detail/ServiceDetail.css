@@ -1,4 +1,44 @@
 .service-detail-screen {
     height: 100vh;
-    overflow: auto;
+    /* overflow: auto; */
+}
+
+.service-detail-card {
+    width: 300px;
+    background-color: white;
+    border-radius: 24px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.service-detail-card header {
+    text-align: center;
+    padding: 10px;
+}
+
+.service-detail-card img {
+    height: 200px;
+    width: 100%;
+}
+
+.service-detail-card p {
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.service-detail-card span {
+    padding: 10px;
+    color: gray;
+}
+
+.reserv-btn {
+    border-radius: 48px;
+    text-align: center;
+    width: 200px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-top: 12px;
 }
