@@ -33,7 +33,12 @@ export default function YandexMap() {
           justifyContent: "center",
         }}
       >
-        <button className="btn-green w3-round-xxlarge">Подбор маршрута</button>
+        <button
+          className="btn-green w3-round-xxlarge"
+          style={{ width: "300px", height: "50px" }}
+        >
+          Подбор маршрута
+        </button>
       </div>
       <YMaps>
         <Map
