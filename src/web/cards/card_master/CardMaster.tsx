@@ -24,7 +24,7 @@ export default function CardMaster() {
   return (
     <div className="card-master">
       <div className="d-flex">
-        <button className="btn" onClick={history.goBack}>
+        <button className="btn" onClick={()=>{history.push(routes.main)}}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <h3 className="text-center">Доступные карты</h3>

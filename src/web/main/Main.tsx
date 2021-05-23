@@ -5,7 +5,6 @@ import "./Main.css";
 import { Link, useHistory } from "react-router-dom";
 import routes from "../routes.json";
 import CardContainer from "./card_container/CardContainer";
-import MainSidebar from "../profile/main_sidebar/MainSidebar";
 import "w3-css";
 
 export default function Main() {
@@ -55,7 +54,6 @@ export default function Main() {
 
   const [leftMenuDisplay, setLeftMenu] = useState("d-none");
 
-  const history = useHistory();
   return (
     <div className="main-screen">
       <div

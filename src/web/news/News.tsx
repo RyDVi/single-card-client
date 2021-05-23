@@ -1,8 +1,9 @@
 import { faArrowLeft, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 import "./News.css";
+import routes from '../routes.json'
 
 export default function News() {
   const history = useHistory();
@@ -30,7 +31,7 @@ export default function News() {
   return (
     <div className="news-screen">
       <div className="d-flex">
-        <button className="btn" onClick={history.goBack}>
+        <button className="btn" onClick={()=>{history.push(routes.main)}}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <div className="w-100 mt-2">

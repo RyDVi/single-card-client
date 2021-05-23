@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Reg.css";
 import routes from "../../routes.json";
-import { stringify } from "querystring";
 import LoadingScreen from "../../loadingscreen/LoadingScreen";
 
 export default function Reg() {

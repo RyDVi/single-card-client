@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "w3-css";
 import LoadingScreen from "../loadingscreen/LoadingScreen";
-import routes from "../routes.json";
 import "./Pay.css";
 
 export default function Pay() {

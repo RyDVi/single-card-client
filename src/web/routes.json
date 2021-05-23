@@ -11,5 +11,6 @@
     "achievements": "/achievements",
     "profile": "/profile",
     "pay": "/pay",
-    "services": "/services"
+    "services": "/services",
+    "service": "/services/:id"
 }

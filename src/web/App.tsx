@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./App.css";
 
 import { hot } from "react-hot-loader";
@@ -15,6 +15,7 @@ import Achievements from "./achievements/Achievements";
 import Profile from "./profile/Profile";
 import Pay from "./pay/Pay";
 import Services from "./services/Services";
+import ServiceDetail from "./services/service_detail/ServiceDetail";
 
 function App() {
   return (
@@ -51,9 +52,13 @@ function App() {
           <Route path={routes.pay}>
             <Pay />
           </Route>
+          <Route path={routes.service}>
+            <ServiceDetail />
+          </Route>
           <Route path={routes.services}>
             <Services />
           </Route>
+
           {/* !Не ставить ниже Home остальные маршруты! */}
           <Route path={routes.home}>
             <Home />

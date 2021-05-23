@@ -13,10 +13,10 @@ export default function Sidebar() {
           <Link className="nav-link" to={routes.cards}>Привязанные карты</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link">second</a>
+          <a className="nav-link" href="#">second</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link">third</a>
+          <a className="nav-link" href="#">third</a>
         </li>
       </ul>
     </div>

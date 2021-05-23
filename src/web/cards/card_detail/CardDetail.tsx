@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router";
 import { useLocation } from "react-router-dom";
 import CardContainer from "../../main/card_container/CardContainer";
 import "./CardDetail.css";
+import routes from '../../routes.json'
 
 export default function CardDetail() {
   let { id }: { id: string } = useParams();
@@ -37,7 +38,7 @@ export default function CardDetail() {
   return (
     <div className="">
       <div className="d-flex">
-        <button className="btn" onClick={history.goBack}>
+        <button className="btn" onClick={()=>{history.push(routes.cards)}}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <h2 className="w-100 m-2 text-center">Информация о карте</h2>

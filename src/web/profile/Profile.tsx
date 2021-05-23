@@ -169,7 +169,7 @@ export default function Profile() {
     <div className="profile-screen">
       <LoadingScreen visible={showLoad} />
       <div className="d-flex">
-        <button className="btn" onClick={history.goBack}>
+        <button className="btn" onClick={()=>{history.push(routes.main)}}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <div className="w-100 mt-2">

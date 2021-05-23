@@ -1,8 +1,9 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 import "./Achievements.css";
+import routes from '../routes.json'
 
 const getColor = (region: string) => {
   switch (region) {
@@ -59,7 +60,7 @@ export default function Achievements() {
   return (
     <div className="achievements-screen">
       <div className="d-flex">
-        <button className="btn" onClick={history.goBack}>
+        <button className="btn" onClick={()=>{history.push(routes.main)}}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <div className="w-100 mt-2">
